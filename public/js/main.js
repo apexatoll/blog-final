@@ -3,7 +3,17 @@ $(document).ready(()=>{
 	$(document).on("click", "#signup", (e)=>{
 		e.preventDefault();
 		new SignUp().show();
-		//new Popup("/signup", ()=>{console.log("hello")}).show();
-		//new Ajax("/signup").get((php)=>{console.log(php)});
+	})
+	$(document).on("click", "#login", (e)=>{
+		e.preventDefault();
+		Footer.load_screen("login")
+	})
+	$(document).on("click", ".footer-cancel", (e)=>{
+		e.preventDefault();
+		Footer.load_screen("default");
+	})
+	$(document).on("click", "#footer-login-submit", (e)=>{
+		e.preventDefault();
+		Footer.login();
 	})
 });

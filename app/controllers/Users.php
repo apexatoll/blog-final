@@ -8,8 +8,13 @@ class Users extends Controller {
 	}
 	public function register($input){
 		$this->validate_registration($input);
+		$this->model->insert($this->build($input));
 		return "You can now log in!";
 	}
+	public function login($attempt){
+		print_r($attempt);
+	}
+
 	private function validate_registration($input){
 		$this->validate_empty_fields($input);
 		$this->validate_email($input['email']);
@@ -40,5 +45,14 @@ class Users extends Controller {
 	private function uniq_email($email){
 		if($this->model->email_exists($email))
 			throw new \Exception("email exists");
+	}
+	private function build($input){
+		unset($input['confirm-password']);
+		$input['password'] = 
+			$this->hash_password($input['password']);
+		return $input;
+	}
+	private function hash_password($password){
+		return password_hash($password, PASSWORD_DEFAULT);
 	}
 }

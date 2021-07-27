@@ -1,36 +1,45 @@
 class Ajax {
-	constructor(path, data=null){
-		this.path = path;
-		this.data = data;
+	parse(url, data=null, tag,
+		success = (php, tag)=>{this.success(php, tag)}, 
+		error   = (php, tag)=>{this.error(php, tag)}){
+		this.post(url, data, (php)=>{
+			this.parse_response(php, tag, success, error);
+		})
+		//this.send_request("POST", url, data, (php)=>{
+			//this.parse_response(php, tag, success, error);
+		//})
 	}
-	post(success=(json)=>{this.success(json)}, error=(json)=>{this.error(json)}){
-		this.send_request("POST", (php)=>{this.parse_response(php, success, error)});
+	post(url, data=null, callback){
+		this.send_request("POST", url, data, (php)=>{
+			callback(php);
+		})
 	}
-	get(callback){
-		this.send_request("GET", callback);
+	get(url, data=null, callback){
+		this.send_request("GET", url, data, (php)=>{
+			callback(php)
+		})
 	}
-	debug(){
-		this.send_request("POST", (php)=>{console.log(php)})
+	debug(url, data=null, type="POST"){
+		this.send_request(type, url, data, (php)=>{
+			console.log(php)
+		})
 	}
-	parse_response(php, success, error){
-		let json = JSON.parse(php)
-		json.success ? success(json) : error(json);
+	parse_response(php, tag, success, error){
+		let json = JSON.parse(php);
+		json.success ? success(json, tag) : error(json, tag);
 	}
-	success(json){
-		console.log(json.success);
-		console.log(json.message)
-	}
-	error(json){
-		Exception.show(".popup-response", json.message);
-	}
-	send_request(method, callback){
+	send_request(type, url, data, callback){
 		$.ajax({
-			type:method,
-			url:this.path,
-			data:this.data,
-			success:(php)=>{
-				callback(php);
-			}
+			type:type,
+			url:url, 
+			data:data,
+			success:(php)=>{ callback(php) }
 		});
+	}
+	success(json, tag){
+		Response.success(json.message, tag);
+	}
+	error(json, tag){
+		Response.error(json.message, tag);
 	}
 }

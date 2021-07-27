@@ -16,13 +16,17 @@ button {
 }
 
 input {
-	background:lighten($black, 3%);
+	background:darken($black, 3%);
 	font-size:1em;
 	color:$blue;
 	border:none;
 	width:100%;
 	box-sizing:border-box;
 	padding:0.3em 0.5em;
+	&::placeholder {
+		color:$grey;
+		//color:lighten($black, 20%);
+	}
 }
 
 h2, h3, h4, h5, h6 {
@@ -44,4 +48,12 @@ p {
 
 .white {
 	color:$white;
+}
+
+.error {
+	color:$red;
+}
+
+.success {
+	color:$green;
 }

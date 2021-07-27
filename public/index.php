@@ -11,8 +11,10 @@ $r = new Router;
 $r->get("/", "Pages#index");
 $r->get("/posts", "Pages#posts");
 $r->get("/posts/:id", "Pages#posts");
-$r->get("/signup", "Popup#signup");
 
+$r->post("/signup", "Popup#signup");
 $r->post("/users/register", "Users#register");
+$r->post("/footer/:screen", "Footer#show");
+$r->post("/users/login", "Users#login");
 
 $r->route();

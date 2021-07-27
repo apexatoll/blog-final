@@ -3,14 +3,11 @@
 @import "lib/global.scss";
 @import "lib/header.scss";
 
-.error {
-	color:$red;
-}
-
 @mixin button($fg, $hfg){
 	color:$fg;
 	border-left:solid 0.15em $fg;
-	padding:0.2em 0.5em;
+	padding:0 0.5em;
+	font-weight:bold;
 	&:hover {
 		color:$hfg;
 		border-color:$hfg;
@@ -25,7 +22,7 @@
 }
 
 button {
-	@include button($dgreen, $green);
+	@include button($blue, $lblue);
 }
 
 html {
@@ -45,6 +42,8 @@ article {
 }
 
 footer {
+	@include color($blue, darken($black, 5%));
+	font-size:1.1em;
 	width:100%;
 	position:fixed;
 	bottom:0;
@@ -52,23 +51,31 @@ footer {
 	* {
 		margin-right:10px;
 	}
-	@include color($green, darken($black, 5%));
 	button {
-		@include button($blue, $lblue);
-		font-weight:bold;
 		padding:0 0.5em;
 	}
-	padding:0 5%;
-	font-size:1.1em;
+	.footer-cancel {
+		@include button(darken($red, 10%), $red);
+	}
+	form {
+		display:inline;
+	}
+	input {
+		background:none;
+		padding:0;
+		width:100px;
+	}
 }
 
 .box {
 	@include color($white, $black);
 	@include shadow;
+	border-radius:10px;
 	width:100%;
 	h2 {
 		padding:10px 2.5% 5px;
 		background:darken($black, 2%);
+		border-radius:10px 10px 0 0;
 	}
 	.content {
 		padding:10px 2.5%;
@@ -77,7 +84,6 @@ footer {
 		}
 	}
 }
-
 
 .fullscreen {
 	width:100vw;
@@ -101,12 +107,6 @@ footer {
 		* {
 			margin:5px 0;
 		}
-		input {
-		background:darken($black, 3%);
-			//&::placeholder {
-				//color:$grey;
-			//}
-		}
 	}
 	.popup-buttons {
 		@include flex(space-around);
@@ -116,28 +116,19 @@ footer {
 			margin:0;
 			width:100%;
 			border:none;
-			font-weight:bold;
-			//padding:0.3em 1em;
-			//border-radius:5px;
+			padding:0.2em 0.5em;
 			&:first-child {
-				&:hover {
-					border-radius:5px 0 0 5px;
-				}
+				border-radius:5px 0 0 5px;
 			}
 			&:last-child {
-				&:hover {
-					border-radius:0 5px 5px 0;
-				}
+				border-radius:0 5px 5px 0;
 			}
 		}
 		.popup-submit{
 			@include hover($grey, $black, none, $dgreen);
-			//@include button($grey, $green);
-			//@include color($black, $dgreen);
 		}
 		.popup-cancel {
 			@include hover($grey, $black, none, darken($red, 15%));
-			//@include button($grey, $red);
 		}
 	}
 }

@@ -29,9 +29,7 @@
 				</article>
 			</main>
 			<footer>
-				<span>Not logged in: </span>
-				<button id="login">log in</button>
-				<button id="signup">sign up</button>
+				<?(new controllers\Footer)->default();?>
 			</footer>
 		</div>
 	</div>

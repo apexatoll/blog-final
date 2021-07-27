@@ -3,8 +3,15 @@ class SignUp extends Popup {
 		super("/signup", ()=>{this.submit()})
 	}
 	submit(){
-		new Ajax("/users/register", Form.collect("#signup-form")).post((php)=>{console.log(php)});
-			//.debug();
-		//console.log(Form.collect("#signup-form"))
+		this.parse(
+			"/users/register", 
+			Form.collect("#signup-form"), 
+			".popup-response",
+			(json, tag)=>{this.success(json, tag)}
+		)
+	}
+	success(json, tag){
+		super.success(json, tag);
+		window.setTimeout(()=>{Popup.close()}, 3000);
 	}
 }
