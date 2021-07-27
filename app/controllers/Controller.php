@@ -18,6 +18,10 @@ class Controller {
 		echo "</div>";
 		echo "</div>";
 	} 
-
+	protected function validate_empty_fields($input){
+		foreach($this->required_fields as $field)
+			if(empty($input[$field]))
+				throw new \Exception(str_replace("-", " ", $field)." empty");
+	}
 }
 

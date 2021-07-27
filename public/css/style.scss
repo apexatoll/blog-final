@@ -1,80 +1,19 @@
 @import "lib/colors.scss";
 @import "lib/mixins.scss";
+@import "lib/global.scss";
+@import "lib/header.scss";
 
-
-html {
-	@include circuits($blue, darken($black, 5%), 0.4);
-	color:$white;
-	font-size:18px;
+.error {
+	color:$red;
 }
 
-a {
-	@include hover($blue, $cyan);
-	text-decoration:none;
-}
-
-button {
-	@include hover($yellow, $red);
-	border:none;
-	font-size:1em;
-}
-
-* {
-	margin:0;
-	padding:0;
-	font-family:"mononoki";
-}
-
-input {
-	background:darken($black, 3%);
-	font-size:1em;
-	color:$blue;
-	border:none;
-	width:100%;
-	box-sizing:border-box;
-	padding:0.3em 0.5em;
-}
-
-
-h2, h3, h4, h5, h6 {
-	color:$blue;
-}
-
-p {
-	line-height:1.4em;
-}
-
-header {
-	background:$black;
-	@include shadow;
-	font-size:1.1em;
-	h1 {
-		a {
-			@include hover($green, $yellow);
-			padding:0.8em 2.5%;
-			display:block;
-		}
-	}
-}
-
-nav {
-	@include color($black, darken($grey, 15%));
-	@include shadow;
-	position:sticky;
-	top:0;
-	font-size:1.2em;
-	ul {
-		@include flex(space-between);
-		list-style:none;
-		li {
-			width:100%;
-			a {
-				@include hover($black, $black, none, $grey);
-				display:block;
-				text-align:center;
-				padding:2px 0;
-			}
-		}
+@mixin button($fg, $hfg){
+	color:$fg;
+	border-left:solid 0.15em $fg;
+	padding:0.2em 0.5em;
+	&:hover {
+		color:$hfg;
+		border-color:$hfg;
 	}
 }
 
@@ -85,27 +24,42 @@ nav {
 	overflow-x:hidden;
 }
 
-.wrapper {
-	width:90%;
-	margin:0 auto;
+button {
+	@include button($dgreen, $green);
 }
 
-.blue {
-	color:$blue;
-}
-
-.white {
+html {
+	@include circuits($blue, darken($black, 5%), 0.4);
 	color:$white;
+	font-size:18px;
 }
 
 main {
-	margin:20px 0 40px;
+	margin:10px 0 40px;
 }
 
 article {
 	.box {
 		margin:20px 0;
 	}
+}
+
+footer {
+	width:100%;
+	position:fixed;
+	bottom:0;
+	left:0;
+	* {
+		margin-right:10px;
+	}
+	@include color($green, darken($black, 5%));
+	button {
+		@include button($blue, $lblue);
+		font-weight:bold;
+		padding:0 0.5em;
+	}
+	padding:0 5%;
+	font-size:1.1em;
 }
 
 .box {
@@ -119,23 +73,11 @@ article {
 	.content {
 		padding:10px 2.5%;
 		* {
-			margin:15px 0;
-			&:first-child{
-				margin:0;
-			}
+			margin:10px 0;
 		}
 	}
 }
 
-footer {
-	width:100%;
-	position:fixed;
-	bottom:0;
-	left:0;
-	@include color($yellow, darken($black, 5%));
-	padding:0 5%;
-	font-size:1.2em;
-}
 
 .fullscreen {
 	width:100vw;
@@ -147,18 +89,55 @@ footer {
 	@include flex;
 }
 
-
 .popup {
 	width:80%;
 	margin:0 auto;
 	h2 {
-		color:$red;
+		color:$yellow;
 	}
 	.content {
 		width:90%;
 		margin:0 auto;
 		* {
-			margin:10px 0;
+			margin:5px 0;
+		}
+		input {
+		background:darken($black, 3%);
+			//&::placeholder {
+				//color:$grey;
+			//}
+		}
+	}
+	.popup-buttons {
+		@include flex(space-around);
+		background:darken($black, 4%);
+		border-radius:5px;
+		button {
+			margin:0;
+			width:100%;
+			border:none;
+			font-weight:bold;
+			//padding:0.3em 1em;
+			//border-radius:5px;
+			&:first-child {
+				&:hover {
+					border-radius:5px 0 0 5px;
+				}
+			}
+			&:last-child {
+				&:hover {
+					border-radius:0 5px 5px 0;
+				}
+			}
+		}
+		.popup-submit{
+			@include hover($grey, $black, none, $dgreen);
+			//@include button($grey, $green);
+			//@include color($black, $dgreen);
+		}
+		.popup-cancel {
+			@include hover($grey, $black, none, darken($red, 15%));
+			//@include button($grey, $red);
 		}
 	}
 }

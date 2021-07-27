@@ -1,17 +1,16 @@
 class Popup extends Ajax {
 	constructor(path, submit, cancel=()=>{Popup.close()}){
 		super(path);
-		this.submit = submit;
-		this.cancel = cancel;
+		this.bind_buttons(submit, cancel);
 	}
 	show(){
 		this.get((php)=>{ $("#window").append(php) });
-		this.bind_buttons();
+		//this.bind_buttons();
 	}
-	bind_buttons(){
-		[this.submit, this.cancel].map((callback, i)=>{
+	bind_buttons(submit, cancel){
+		[submit, cancel].map((callback, i)=>{
 			$(document).on("click", Popup.button_tags()[i], (e)=>{
-				e.preventDefault();
+				//e.preventDefault();
 				callback();
 			})
 		})

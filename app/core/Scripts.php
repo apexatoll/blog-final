@@ -13,7 +13,7 @@ class Scripts {
 		return Root."/public/js/$file";
 	}
 	private static function script($path){
-		return "<script src='$path' defer></script>";
+		return "<script src='$path'></script>";
 	}
 	private static function js_classes(){
 		return array_diff(scandir(self::js_path("lib")), [".", ".."]);

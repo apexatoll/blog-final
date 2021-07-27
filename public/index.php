@@ -13,4 +13,6 @@ $r->get("/posts", "Pages#posts");
 $r->get("/posts/:id", "Pages#posts");
 $r->get("/signup", "Popup#signup");
 
+$r->post("/users/register", "Users#register");
+
 $r->route();

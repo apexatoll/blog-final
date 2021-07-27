@@ -2,8 +2,10 @@
 	<div class="wrapper">
 		<?$this->box("Sign up", "popup")?>
 		<?require_once($params['file']);?>
-		<button class="popup-btn popup-submit">Submit</button>
-		<button class="popup-btn popup-cancel">Cancel</button>
+		<div class="popup-buttons">
+			<button class="popup-cancel">Cancel</button>
+			<button class="popup-submit">Submit</button>
+		</div>
 		<?$this->close_box();?>
 	</div>
 </div>

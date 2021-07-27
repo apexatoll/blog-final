@@ -1,12 +1,8 @@
+<div class="popup-response"></div>
 <form id="signup-form" action="">
-	<label for="name">Name</label>
-	<input type="text" name="name">
-	<label for="username">Username</label>
-	<input type="text" name="username">
-	<label for="email">Email</label>
-	<input type="text" name="email">
-	<label for="password">Password</label>
-	<input type="password" name="password">
-	<label for="conf-password">Confirm Password</label>
-	<input type="password" name="conf-password">
+	<input type="text" name="name" placeholder="Enter name...">
+	<input type="text" name="username" placeholder="Enter username...">
+	<input type="text" name="email" placeholder="Enter email...">
+	<input type="password" name="password" placeholder="Enter password...">
+	<input type="password" name="confirm-password" placeholder="Confirm password...">
 </form>
