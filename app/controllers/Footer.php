@@ -2,8 +2,8 @@
 
 class Footer extends Controller {
 	private $prompt = [
-		"default" => "Not logged in: ",
-		"login" => "Not logged in: "
+		"default" => "Welcome: ",
+		"login" => "Welcome: "
 	];
 	public function default(){
 		$this->view("default", ["screen"=>"default"]);

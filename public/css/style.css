@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "mononoki";
+  src: url("../fonts/mononoki-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/mononoki-Regular.woff2") format("woff2"), url("../fonts/mononoki-Regular.woff") format("woff"), url("../fonts/mononoki-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "mononoki";
+  src: url("../fonts/mononoki-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/mononoki-Bold.woff2") format("woff2"), url("../fonts/mononoki-Bold.woff") format("woff"), url("../fonts/mononoki-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "mononoki";
+  src: url("../fonts/mononoki-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/mononoki-Italic.woff2") format("woff2"), url("../fonts/mononoki-Italic.woff") format("woff"), url("../fonts/mononoki-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "mononoki";
+  src: url("../fonts/mononoki-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/mononoki-BoldItalic.woff2") format("woff2"), url("../fonts/mononoki-BoldItalic.woff") format("woff"), url("../fonts/mononoki-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
 * {
   margin: 0;
   padding: 0;
@@ -28,7 +52,7 @@ button:hover {
 input {
   background: #111a22;
   font-size: 1em;
-  color: #296dcf;
+  color: #e39f31;
   border: none;
   width: 100%;
   box-sizing: border-box;
@@ -130,14 +154,14 @@ nav ul li:last-child a {
 }
 
 button {
-  color: #296dcf;
-  border-left: solid 0.15em #296dcf;
+  color: #3db5e1;
+  border-left: solid 0.15em #3db5e1;
   padding: 0 0.5em;
   font-weight: bold;
 }
 button:hover {
-  color: #3db5e1;
-  border-color: #3db5e1;
+  color: #e39f31;
+  border-color: #e39f31;
 }
 
 html {
@@ -158,7 +182,7 @@ article .box {
 footer {
   color: #296dcf;
   background: #0e151b;
-  font-size: 1.1em;
+  font-size: 1.15em;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -177,8 +201,8 @@ footer .footer-cancel {
   font-weight: bold;
 }
 footer .footer-cancel:hover {
-  color: #cc4131;
-  border-color: #cc4131;
+  color: #d76659;
+  border-color: #d76659;
 }
 footer form {
   display: inline;

@@ -10,6 +10,8 @@ $r = new Router;
 
 $r->get("/", "Pages#index");
 $r->get("/posts", "Pages#posts");
+$r->get("/about", "Pages#about");
+$r->get("/contact", "Pages#contact");
 $r->get("/posts/:id", "Pages#posts");
 
 $r->post("/signup", "Popup#signup");
